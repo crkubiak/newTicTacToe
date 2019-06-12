@@ -7,6 +7,7 @@ public class Game {
     private int turnCount = 0;
     private String[] markers = {"X","O"};
     private Scanner playerTurn;
+    private boolean gameWon = false;
 
     public Game(Board board, Validation validation) {
         this.board = board;
@@ -27,13 +28,19 @@ public class Game {
         }
     }
 
+    public void victory() {
+        String[][] possiblyWins = {{this.play}}
+    }
+
     public void playGame() {
         playerTurn = new Scanner(System.in);
-        System.out.println(board.displayBoard() + " " + turnCount);
         while(turnCount < 9) {
-            int playerInput = validation.inputInt("Please enter a number 1-9: ", playerTurn);
+            System.out.print("\033[H\033[2J");
+            System.out.println(board.displayBoard());
+            System.out.println("Please enter a number 1-9: ");
+            int playerInput = validation.inputInt("Integers only! Please enter a number 1-9: ", playerTurn);
             move(playerInput);
-            System.out.println(board.displayBoard() + " " + turnCount);
+
         }
     }
 }

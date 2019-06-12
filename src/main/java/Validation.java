@@ -15,7 +15,7 @@ public class Validation {
         try {
             return playerTurn.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println("Please enter a number 1-9! ");
+            System.out.println(prompt);
             playerTurn.next();
             return inputInt(prompt, playerTurn);
         }
