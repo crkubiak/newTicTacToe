@@ -32,7 +32,7 @@ public class GameTest {
     }
 
     @Test
-    public void multipleTurnsMarkedonBoard() {
+    public void multipleTurnsMarkedOnBoard() {
         Validation validation =new Validation();
         Board board = new Board();
         Game game = new Game(board, validation);
@@ -41,4 +41,20 @@ public class GameTest {
         String[] expectedBoard = {"1","2","3","X","5","O","7","8","9"};
         assertArrayEquals(expectedBoard, board.currentMoves());
     }
+
+    @Test
+    public void testVictory() {
+        Validation validation =new Validation();
+        Board board = new Board();
+        Game game = new Game(board, validation);
+        String[] expectedBoard = {"X","X","X","O","O","6","7","8","9"};
+    }
+
+//    @Test
+//    public void testPlayGame() {
+//        Validation validation =new Validation();
+//        Board board = new Board();
+//        Game game = new Game(board, validation);
+//        game.playGame();
+//    }
 }
