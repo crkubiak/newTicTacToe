@@ -36,19 +36,12 @@ public class GameTest {
         Validation validation =new Validation();
         Board board = new Board();
         Game game = new Game(board, validation);
-        game.move(4);
+        game.move(4);//note
         game.move(6);
         String[] expectedBoard = {"1","2","3","X","5","O","7","8","9"};
         assertArrayEquals(expectedBoard, board.currentMoves());
     }
 
-    @Test
-    public void testVictory() {
-        Validation validation =new Validation();
-        Board board = new Board();
-        Game game = new Game(board, validation);
-        String[] expectedBoard = {"X","X","X","O","O","6","7","8","9"};
-    }
 
 //    @Test
 //    public void testPlayGame() {
