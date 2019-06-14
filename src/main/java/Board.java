@@ -1,6 +1,6 @@
 public class Board {
 
-    private String[] currentBoard = {"1","2","3","4","5","6","7","8","9"};
+    protected String[] currentBoard = {"1","2","3","4","5","6","7","8","9"};
 
     public String[] currentMoves() {
         return this.currentBoard;

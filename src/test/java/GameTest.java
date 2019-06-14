@@ -42,13 +42,6 @@ public class GameTest {
         assertArrayEquals(expectedBoard, board.currentMoves());
     }
 
-    @Test
-    public void testVictory() {
-        Validation validation =new Validation();
-        Board board = new Board();
-        Game game = new Game(board, validation);
-        String[] expectedBoard = {"X","X","X","O","O","6","7","8","9"};
-    }
 
 //    @Test
 //    public void testPlayGame() {
