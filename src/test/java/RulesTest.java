@@ -33,7 +33,7 @@ public class RulesTest {
         game.move(5);
         game.move(3);
         assertArrayEquals(expectedBoard, rules.playerConversion(board, game));
-
+//test
     }
 
 }
