@@ -16,7 +16,8 @@ public class RulesTest {
     @Test
     public void testVictoryCheck() {
         Rules rules = new Rules();
-        Integer[] currentPlayersBoard = {1,2,3,0,0,0,0,0,0};
-        assertTrue(rules.victoryCheck(c));
+        String currentPlayer = "X";
+        String[] board = {"X","X","X","O","O","6","7","8","9"};
+        assertEquals("X", rules.victoryCheck(board, currentPlayer));
     }
 }
