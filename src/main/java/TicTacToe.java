@@ -1,8 +1,9 @@
 public class TicTacToe {
     public static void main(String[] args) {
-        Validation validation = new Validation();
         Board board = new Board();
-        Game game = new Game(board, validation);
+        Validation validation = new Validation();
+        Rules rules = new Rules();
+        Game game = new Game(board, validation, rules);
         game.playGame();
     }
 }
