@@ -21,6 +21,7 @@ public class Game {
         if(this.validation.moveIsInRange(selectedSquare)
                 && this.validation.moveIsAvailable(selectedSquare, this.board)){
             this.board.move(selectedSquare, this.currentPlayer());
+//            rules.playerConversion(board.currentBoard, currentPlayer());
             this.turnCount += 1;
         } else {
             System.out.println("Invalid Move!");
@@ -35,7 +36,6 @@ public class Game {
             System.out.println("Please enter a number 1-9: ");
             int playerInput = validation.inputInt("Integers only! Please enter a number 1-9: ", playerTurn);
             move(playerInput);
-
         }
     }
 }
