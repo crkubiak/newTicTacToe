@@ -120,6 +120,6 @@ modules.xml
 .idea/sonarlint
 
 #Adds by Charles
-.build/test-results/
+.build/
 
 # End of https://www.gitignore.io/api/intellij+all
