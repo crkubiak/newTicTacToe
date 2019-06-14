@@ -26,6 +26,7 @@ public class Rules {
                 playerWon = currentPlayer;
             }
         }
+        System.out.println("Player "+ playerWon + " won!");
         return playerWon;
     }
 

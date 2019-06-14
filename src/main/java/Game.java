@@ -4,13 +4,15 @@ public class Game {
 
     private Board board;
     private Validation validation;
+    private Rules rules;
     protected int turnCount = 0;
     protected String[] markers = {"X","O"};
     private Scanner playerTurn;
 
-    public Game(Board board, Validation validation) {
+    public Game(Board board, Validation validation, Rules rules) {
         this.board = board;
         this.validation = validation;
+        this.rules = rules;
     }
 
     public String currentPlayer() {
@@ -21,7 +23,7 @@ public class Game {
         if(this.validation.moveIsInRange(selectedSquare)
                 && this.validation.moveIsAvailable(selectedSquare, this.board)){
             this.board.move(selectedSquare, this.currentPlayer());
-//            rules.playerConversion(board.currentBoard, currentPlayer());
+            this.rules.victoryCheck(board.currentBoard, currentPlayer());
             this.turnCount += 1;
         } else {
             System.out.println("Invalid Move!");
@@ -31,7 +33,7 @@ public class Game {
     public void playGame() {
         playerTurn = new Scanner(System.in);
         while(turnCount < 9) {
-            System.out.print("\033[H\033[2J");
+//            System.out.print("\033[H\033[2J");
             System.out.println(board.displayBoard());
             System.out.println("Please enter a number 1-9: ");
             int playerInput = validation.inputInt("Integers only! Please enter a number 1-9: ", playerTurn);
