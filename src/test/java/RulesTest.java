@@ -3,37 +3,21 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class RulesTest {
-//    @Test
-//    public void testVictory() {
-//        String[] expectedBoard = {"X","X","X","O","O","6","7","8","9"};
-//        Rules rules = new Rules();
-//
-//        assertEquals(true, rules.victory(expectedBoard));
-//    }
-//
-//    @Test
-//    public void chunksIntoRows() {
-//        String[] expectedBoard = {"X","X","X","O","O","6","7","8","9"};
-//        String[][] chunkedBoard = {{"X","X","X"},{"O","O","6"},{"7","8","9"}};
-//        Rules rules = new Rules();
-//
-//        assertEquals(chunkedBoard, rules.chunk(expectedBoard));
-//    }
 
     @Test
-    public void playerConversion() {
-        Validation validation = new Validation();
-        Board board = new Board();
-        Game game = new Game(board, validation);
+    public void testPlayerConversion() {
         Rules rules = new Rules();
-        Integer[] expectedBoard = {0,0,0,4,5,0,0,0,0};
-        game.move(1);
-        game.move(4);
-        game.move(2);
-        game.move(5);
-        game.move(3);
-        assertArrayEquals(expectedBoard, rules.playerConversion(board, game));
-
+        String currentPlayer = "X";
+        Integer[] expectedBoard = {1,2,3,0,0,0,0,0,0};
+        String[] board = {"X","X","X","O","O","6","7","8","9"};
+        assertArrayEquals(expectedBoard, rules.playerConversion(board, currentPlayer));
     }
 
+    @Test
+    public void testVictoryCheck() {
+        Rules rules = new Rules();
+        String currentPlayer = "X";
+        String[] board = {"X","X","X","O","O","6","7","8","9"};
+        assertEquals("X", rules.victoryCheck(board, currentPlayer));
+    }
 }
