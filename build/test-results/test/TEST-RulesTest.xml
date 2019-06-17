@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RulesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-06-14T16:16:22" hostname="Charless-MacBook-Pro.local" time="0.005">
-  <properties/>
-  <testcase name="testVictoryCheck" classname="RulesTest" time="0.003"/>
-  <testcase name="testPlayerConversion" classname="RulesTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

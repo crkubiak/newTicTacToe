@@ -8,10 +8,10 @@ public class Validation {
     }
 
     public boolean moveIsAvailable(int selectedSquare, Board board) {
-        return ((board.currentMoves()[selectedSquare - 1] != "X") && (board.currentMoves()[selectedSquare - 1] != "O"));
+        return ((!board.currentMoves()[selectedSquare - 1].equals("X")) && (!board.currentMoves()[selectedSquare - 1].equals("O")));
     }
 
-    public int inputInt(String prompt, Scanner playerTurn) {
+    int inputInt(String prompt, Scanner playerTurn) {
         try {
             return playerTurn.nextInt();
         } catch (InputMismatchException e) {
