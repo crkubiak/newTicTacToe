@@ -18,7 +18,8 @@ public class ValidationTest {
     public void testMoveIsAvailable() {
         Validation validation = new Validation();
         Board board = new Board();
-        Game game = new Game(board, validation);
+        Rules rules = new Rules();
+        Game game = new Game(board, validation, rules);
         game.move(5);
         assertTrue(validation.moveIsAvailable(3, board));
         assertFalse(validation.moveIsAvailable(5, board));

@@ -5,14 +5,16 @@ public class Game {
     private Board board;
     private Validation validation;
     private Rules rules;
-    protected int turnCount = 0;
-    protected String[] markers = {"X","O"};
-    private Scanner playerTurn;
+    private IO io;
+    private int turnCount = 0;
+    private String[] markers = {"X","O"};
 
-    public Game(Board board, Validation validation, Rules rules) {
+    public Game(Board board, Validation validation, Rules rules, IO io) {
         this.board = board;
         this.validation = validation;
         this.rules = rules;
+        this.io = io;
+
     }
 
     public String currentPlayer() {
@@ -26,12 +28,13 @@ public class Game {
             this.rules.victoryCheck(board.currentBoard, currentPlayer());
             this.turnCount += 1;
         } else {
+            io.invalidMoveIO();
             System.out.println("Invalid Move!");
         }
     }
 
-    public void playGame() {
-        playerTurn = new Scanner(System.in);
+    void playGame() {
+        Scanner playerTurn = new Scanner(System.in);
         while(turnCount < 9) {
 //            System.out.print("\033[H\033[2J");
             System.out.println(board.displayBoard());
