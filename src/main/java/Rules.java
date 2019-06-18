@@ -3,9 +3,8 @@ import java.util.HashSet;
 
 public class Rules {
 
-    private String playerWon = "";
+    String playerWon = "";
     private Integer[] currentPlayersBoard = {0,0,0,0,0,0,0,0,0};
-    private HashSet<Integer> victorySet = new HashSet<>();
     private Integer[][] winningBoards = {
             {1,2,3},
             {4,5,6},
@@ -20,17 +19,20 @@ public class Rules {
     public String victoryCheck(String[] board, String currentPlayer) {
         Integer[] boardToCheck = playerConversion(board, currentPlayer);
         for (int game = 0; game < currentPlayersBoard.length - 1; game++) {
+            HashSet<Integer> victorySet = new HashSet<>();
             victorySet.addAll(Arrays.asList(boardToCheck));
             victorySet.retainAll(Arrays.asList(winningBoards[game]));
             if (victorySet.size() == 3) {
                 playerWon = currentPlayer;
+                System.out.println("Player "+ playerWon + " won!");
+            } else {
+                currentPlayersBoard = new Integer[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
             }
         }
-        System.out.println("Player "+ playerWon + " won!" + victorySet);
         return playerWon;
     }
 
-    public Integer[] playerConversion(String[] board, String currentPlayer) {
+    Integer[] playerConversion(String[] board, String currentPlayer) {
 
         for (int i = 0; i < board.length; i++) {
             if (board[i].equals(currentPlayer)) {
