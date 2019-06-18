@@ -5,15 +5,13 @@ public class Game {
     private Board board;
     private Validation validation;
     private Rules rules;
-    private IO io;
     private int turnCount = 0;
     private String[] markers = {"X","O"};
 
-    public Game(Board board, Validation validation, Rules rules, IO io) {
+    public Game(Board board, Validation validation, Rules rules) {
         this.board = board;
         this.validation = validation;
         this.rules = rules;
-        this.io = io;
 
     }
 
@@ -28,7 +26,6 @@ public class Game {
             this.rules.victoryCheck(board.currentBoard, currentPlayer());
             this.turnCount += 1;
         } else {
-            io.invalidMoveIO();
             System.out.println("Invalid Move!");
         }
     }
