@@ -2,17 +2,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-
 public class GameTest {
 
     @Test
     public void gameStartsWithPlayerX() {
+
         Validation validation = new Validation();
         Board board = new Board();
         Rules rules = new Rules();
         Game game = new Game(board, validation, rules);
         assertEquals("X", game.currentPlayer());
-
     }
 
     @Test
@@ -42,6 +41,7 @@ public class GameTest {
         Board board = new Board();
         Rules rules = new Rules();
         Game game = new Game(board, validation, rules);
+
         game.move(4);
         game.move(6);
         String[] expectedBoard = {"1","2","3","X","5","O","7","8","9"};
