@@ -2,20 +2,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-class MockIO extends IO {
 
-}
 public class GameTest {
 
     @Test
     public void gameStartsWithPlayerX() {
-        MockIO mockIO = new MockIO();
+
         Validation validation = new Validation();
         Board board = new Board();
         Rules rules = new Rules();
         Game game = new Game(board, validation, rules);
         assertEquals("X", game.currentPlayer());
-        assertEquals("Invalid move!", mockIO.invalidMoveIO());
+
     }
 
     @Test
