@@ -3,7 +3,7 @@ import java.util.HashSet;
 
 public class Rules {
 
-    String playerWon = "";
+    private String playerWon = "";
     private Integer[] currentPlayersBoard = {0,0,0,0,0,0,0,0,0};
     private Integer[][] winningBoards = {
             {1,2,3},
@@ -15,6 +15,10 @@ public class Rules {
             {1,5,9},
             {3,5,7}
     };
+
+    public String didPlayerWin() {
+        return playerWon;
+    }
 
     public String victoryCheck(String[] board, String currentPlayer) {
         Integer[] boardToCheck = playerConversion(board, currentPlayer);
