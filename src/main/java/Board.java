@@ -30,11 +30,11 @@ public class Board {
 
     public ArrayList<Integer> availableSpaces() {
         ArrayList<Integer> available = new ArrayList<>();
-        int filled = 0;
+//        int filled = 0;
         for (int space = 0; space < currentBoard.length; space++) {
             if (!currentBoard[space].equals("X") && !currentBoard[space].equals("O")) {
                 available.add(space);
-                filled += 1;
+//                filled += 1;
             }
         }
         System.out.println();
