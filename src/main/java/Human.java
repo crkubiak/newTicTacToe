@@ -8,4 +8,8 @@ public class Human implements Player {
     public void setMarker(String selectedMarker) {
         marker = selectedMarker;
     }
+
+    public int takeTurn(Board board){
+        return 5;
+    }
 }

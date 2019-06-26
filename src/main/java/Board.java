@@ -1,6 +1,17 @@
-public class Board {
+import java.util.ArrayList;
 
-    private String[] currentBoard = {"1","2","3","4","5","6","7","8","9"};
+public class Board {
+    String[] currentBoard;
+
+    Board(String[] currentBoard) {
+        this.currentBoard = currentBoard;
+    }
+
+    Board() {
+        this.currentBoard = newBoard;
+    }
+
+    private String[] newBoard = {"1","2","3","4","5","6","7","8","9"};
 
     public String[] currentMoves() {
         return currentBoard;
@@ -15,5 +26,18 @@ public class Board {
 
     public void move(int selectedSquare, String playerMarker) {
         currentBoard[selectedSquare - 1] = playerMarker;
+    }
+
+    public ArrayList<Integer> availableSpaces() {
+        ArrayList<Integer> available = new ArrayList<>();
+        int filled = 0;
+        for (int space = 0; space < currentBoard.length; space++) {
+            if (!currentBoard[space].equals("X") && !currentBoard[space].equals("O")) {
+                available.add(space);
+                filled += 1;
+            }
+        }
+        System.out.println();
+        return available;
     }
 }

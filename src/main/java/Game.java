@@ -7,6 +7,8 @@ public class Game {
     private Rules rules;
     private int turnCount = 0;
     private String[] markers = {"X", "O"};
+    private String playerOne;
+    private String playerTwo;
 
     public Game(Board board, Validation validation, Rules rules) {
         this.board = board;
@@ -45,5 +47,11 @@ public class Game {
         } else {
             System.out.println("The game is a draw");
         }
+    }
+
+    public void playerType(String playerType) {
+//        if (playerType == "h") {
+//            return "Human";
+//        }
     }
 }
