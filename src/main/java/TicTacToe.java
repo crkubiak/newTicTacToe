@@ -9,7 +9,7 @@ public class TicTacToe {
             Board board = new Board();
             Validation validation = new Validation();
             Rules rules = new Rules();
-            Game game = new Game(board, validation, rules);
+            Games game = new HumVsHumGame(board, validation, rules);
             game.individualGameLoop();
             System.out.println("Would you like to play again? (y/n): ");
             Scanner playAgain = new Scanner(System.in);

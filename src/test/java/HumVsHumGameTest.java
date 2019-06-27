@@ -47,4 +47,26 @@ public class GameTest {
         String[] expectedBoard = {"1","2","3","X","5","O","7","8","9"};
         assertArrayEquals(expectedBoard, board.currentMoves());
     }
+
+//    @Test
+//    public void testPlayerTypeHuman() {
+//        Validation validation = new Validation();
+//        Board board = new Board();
+//        Rules rules = new Rules();
+//        Game game = new Game(board, validation, rules);
+//        String expectedPlayerType = "Human";
+//        String actualPlayerType = game.playerType("h");
+//        assertEquals(expectedPlayerType, actualPlayerType);
+//    }
+//
+//    @Test
+//    public void testPlayerTypeRandomComputer() {
+//        Validation validation = new Validation();
+//        Board board = new Board();
+//        Rules rules = new Rules();
+//        Game game = new Game(board, validation, rules);
+//        String expectedPlayerType = "Random Computer";
+//        String actualPlayerType = game.playerType("r");
+//        assertEquals(expectedPlayerType, actualPlayerType);
+//    }
 }

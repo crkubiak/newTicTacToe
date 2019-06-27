@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Game {
+public class HumVsHumGame implements Games {
 
     private Board board;
     private Validation validation;
@@ -8,7 +8,7 @@ public class Game {
     private int turnCount = 0;
     private String[] markers = {"X", "O"};
 
-    public Game(Board board, Validation validation, Rules rules) {
+    public HumVsHumGame(Board board, Validation validation, Rules rules) {
         this.board = board;
         this.validation = validation;
         this.rules = rules;
@@ -31,7 +31,7 @@ public class Game {
         }
     }
 
-    void individualGameLoop() {
+    public void individualGameLoop() {
         Scanner playerTurn = new Scanner(System.in);
         while (turnCount < 9 && rules.didPlayerWin().length() == 0) {
             System.out.println(board.displayBoard());
