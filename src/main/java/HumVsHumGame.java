@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class HumVsHumGame implements Games {
+public class HumVsHumGame implements Game {
 
     private Board board;
     private Validation validation;
@@ -25,9 +25,11 @@ public class HumVsHumGame implements Games {
             board.move(selectedSquare, currentPlayer());
             rules.victoryCheck(board.currentMoves(), currentPlayer());
             turnCount += 1;
+
         } else {
             System.out.print("\033[H\033[2J");
-            System.out.println("Invalid Move!");
+            System.out.println(selectedSquare + " is an invalid move!");
+
         }
     }
 

@@ -1,26 +1,21 @@
 public class GameSelector {
-
-    private Games game;
-
-    public Object gameSelection(int gameType) {
+    public void gameSelection(int gameType) {
         switch (gameType) {
             case 1:
-                Board board = new Board();
-                Validation validation = new Validation();
-                Rules rules = new Rules();
-                Games game = new HumVsHumGame(board, validation, rules);
-                game.individualGameLoop();
+                Board boardHVH = new Board();
+                Validation validationHVH = new Validation();
+                Rules rulesHVH = new Rules();
+                Game gameHVH = new HumVsHumGame(boardHVH, validationHVH, rulesHVH);
+                gameHVH.individualGameLoop();
                 break;
-//            case 2:
-//                Board board = new Board();
-//                Validation validation = new Validation();
-//                Rules rules = new Rules();
-//                Games game = new HumVsRandCPUGame(board, validation, rules);
-//                game.individualGameLoop();
-//                break;
+            case 2:
+                Board boardHVRc = new Board();
+                Validation validationHVRc = new Validation();
+                Rules rulesHVRc = new Rules();
+                RandomComputer randomComputerHVRc = new RandomComputer();
+                Game gameHVRc = new HumVsRandCPUGame(boardHVRc, validationHVRc, rulesHVRc, randomComputerHVRc);
+                gameHVRc.individualGameLoop();
+                break;
         }
-
-
-        return game;
     }
 }

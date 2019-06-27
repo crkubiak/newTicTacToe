@@ -1,4 +1,4 @@
-public interface Games {
+public interface Game {
     String currentPlayer();
     void move(int selectedSquare);
     void individualGameLoop();
