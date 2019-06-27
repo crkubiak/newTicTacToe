@@ -19,4 +19,14 @@ public class RandomComputerTest {
         String actualMarker = rc.getMarker();
         assertEquals(expectedMarker, actualMarker);
     }
+
+    @Test
+    public void testTakeTurn() {
+        RandomComputer rc = new RandomComputer();
+        String[] testBoard = {"X", "X", "X", "O", "O", "X", "X", "O", "9"};
+        Board board = new Board(testBoard);
+        int expected = 8;
+        int actual = rc.takeTurn(board);
+        assertEquals(expected, actual);
+    }
 }

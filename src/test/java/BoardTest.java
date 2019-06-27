@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class BoardTest {
@@ -42,4 +45,23 @@ public class BoardTest {
         String expectedBoard = "1|2|3\n-+-+-\n4|5|6\n-+-+-\n7|8|9";
         assertEquals(expectedBoard,board.displayBoard());
     }
+
+    @Test
+    public void testAvailableSpaces4Taken() {
+        String[] currentBoard = {"O","2","3","X","5","6","7","X","O"};
+        Board board = new Board(currentBoard);
+        ArrayList<Integer> available = new ArrayList<>(Arrays.asList(1,2,4,5,6));
+        assertEquals(available, board.availableSpaces());
+    }
+
+    @Test
+    public void testAvailableSpaces2Taken() {
+        String[] currentBoard = {"1","2","3","4","5","6","7","8","9"};
+        Board board = new Board(currentBoard);
+        ArrayList<Integer> available = new ArrayList<>(Arrays.asList(0,1,2,3,4,5,6,7,8));
+        assertEquals(available, board.availableSpaces());
+    }
+
+
 }
+//`ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));` (edited)

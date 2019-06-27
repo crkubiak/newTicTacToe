@@ -19,8 +19,8 @@ public class ValidationTest {
         Validation validation = new Validation();
         Board board = new Board();
         Rules rules = new Rules();
-        Game game = new Game(board, validation, rules);
-        game.move(5);
+        HumVsHumGame humVsHumGame = new HumVsHumGame(board, validation, rules);
+        humVsHumGame.move(5);
         assertTrue(validation.moveIsAvailable(3, board));
         assertFalse(validation.moveIsAvailable(5, board));
     }
