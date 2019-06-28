@@ -3,7 +3,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class RandomComputerTest {
-
     @Test
     public void testTakeTurn() {
         Player rc = new RandomComputer();

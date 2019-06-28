@@ -15,15 +15,14 @@ public class Rules {
             {3,5,7}
     };
 
-    public String didPlayerWin() {
+    String didPlayerWin() {
         return playerWon;
     }
 
     public String victoryCheck(String[] board, String currentPlayer) {
         Integer[] boardToCheck = playerConversion(board, currentPlayer);
         for (int game = 0; game < currentPlayersBoard.length - 1; game++) {
-            HashSet<Integer> victorySet = new HashSet<>();
-            victorySet.addAll(Arrays.asList(boardToCheck));
+            HashSet<Integer> victorySet = new HashSet<>(Arrays.asList(boardToCheck));
             victorySet.retainAll(Arrays.asList(winningBoards[game]));
             if (victorySet.size() == 3) {
                 playerWon = currentPlayer;
