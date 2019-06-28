@@ -14,8 +14,8 @@ public class TicTacToe {
             Scanner pickAGame = new Scanner(System.in);
             int gameType = pickAGame.nextInt();
             GameSelector gameSelector = new GameSelector();
-            gameSelector.gameSelection(gameType);
-//            game.individualGameLoop();
+            Game game = gameSelector.gameSelection(gameType);
+            game.individualGameLoop();
             System.out.println("Would you like to play again? (y/n): ");
             Scanner playAgain = new Scanner(System.in);
             wantsToPlay = playAgain.hasNext("y");
