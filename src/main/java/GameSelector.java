@@ -1,10 +1,10 @@
-public class GameSelector {
+class GameSelector {
     private Board board = new Board();
     private Validation validation = new Validation();
     private Rules rules = new Rules();
     private Game configuration;
 
-    public Game gameSelection(int gameType) {
+    Game gameSelection(int gameType) {
         switch (gameType) {
             case 1:
                 configuration = new HumVsHumGame(board, validation, rules);

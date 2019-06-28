@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class HumVsHumGame implements Game {
-
     private Board board;
     private Validation validation;
     private Rules rules;

@@ -16,17 +16,12 @@ public class ValidationTest {
 
     @Test
     public void testMoveIsAvailable() {
-        Validation validation = new Validation();
         Board board = new Board();
         Rules rules = new Rules();
-        HumVsHumGame humVsHumGame = new HumVsHumGame(board, validation, rules);
-        humVsHumGame.move(5);
+        Validation validation = new Validation();
+        Game game = new HumVsHumGame(board, validation, rules);
+        game.move(5);
         assertTrue(validation.moveIsAvailable(3, board));
         assertFalse(validation.moveIsAvailable(5, board));
-    }
-
-    @Test
-    public void testInputInt() throws InputMismatchException {
-
     }
 }

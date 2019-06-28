@@ -2,7 +2,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Validation {
-
     public boolean moveIsInRange(int selectedSquare) {
         return (selectedSquare > 0 && selectedSquare < 10) ;
     }

@@ -2,7 +2,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Rules {
-
     private String playerWon = "";
     private Integer[] currentPlayersBoard = {0,0,0,0,0,0,0,0,0};
     private Integer[][] winningBoards = {

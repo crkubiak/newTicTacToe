@@ -1,5 +1,4 @@
 public class RandomComputer implements Player {
-
     private String marker = "X";
 
     public String getMarker() {
