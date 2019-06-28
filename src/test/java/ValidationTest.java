@@ -19,7 +19,9 @@ public class ValidationTest {
         Board board = new Board();
         Rules rules = new Rules();
         Validation validation = new Validation();
-        Game game = new HumVsHumGame(board, validation, rules);
+        Player playerOne = new Human();
+        Player playerTwo = new RandomComputer();
+        Game game = new Game(board, validation, rules, playerOne, playerTwo);
         game.move(5);
         assertTrue(validation.moveIsAvailable(3, board));
         assertFalse(validation.moveIsAvailable(5, board));

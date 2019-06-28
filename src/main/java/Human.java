@@ -1,15 +1,12 @@
+import java.util.Scanner;
+
 public class Human implements Player {
-    private String marker = "X";
-
-    public String getMarker() {
-        return marker;
-    }
-
-    public void setMarker(String selectedMarker) {
-        marker = selectedMarker;
-    }
+    private Validation validation = new Validation();
 
     public int takeTurn(Board board){
-        return 5;
+        Scanner playerTurn = new Scanner(System.in);
+        System.out.println(board.displayBoard());
+        System.out.println("Please enter a number 1-9: ");
+        return validation.inputInt("Integers only! Please enter a number 1-9: ", playerTurn);
     }
 }

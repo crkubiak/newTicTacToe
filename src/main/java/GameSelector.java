@@ -2,18 +2,20 @@ class GameSelector {
     private Board board = new Board();
     private Validation validation = new Validation();
     private Rules rules = new Rules();
-    private Game configuration;
+    private Player playerOne;
+    private Player playerTwo;
 
     Game gameSelection(int gameType) {
         switch (gameType) {
             case 1:
-                configuration = new HumVsHumGame(board, validation, rules);
+                playerOne = new Human();
+                playerTwo = new Human();
                 break;
             case 2:
-                RandomComputer randomComputer = new RandomComputer();
-                configuration = new HumVsRandCPUGame(board, validation, rules, randomComputer);
+                playerOne = new Human();
+                playerTwo = new RandomComputer();
                 break;
         }
-        return configuration;
+        return new Game(board, validation, rules, playerOne, playerTwo);
     }
 }

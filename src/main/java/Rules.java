@@ -27,7 +27,6 @@ public class Rules {
             victorySet.retainAll(Arrays.asList(winningBoards[game]));
             if (victorySet.size() == 3) {
                 playerWon = currentPlayer;
-                System.out.println("Player "+ playerWon + " won!");
             } else {
                 currentPlayersBoard = new Integer[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
             }
@@ -36,7 +35,6 @@ public class Rules {
     }
 
     Integer[] playerConversion(String[] board, String currentPlayer) {
-
         for (int i = 0; i < board.length; i++) {
             if (board[i].equals(currentPlayer)) {
                 currentPlayersBoard[i] = i + 1;
