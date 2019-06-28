@@ -1,19 +1,17 @@
 public class GameSelector {
+    private Board board = new Board();
+    private Validation validation = new Validation();
+    private Rules rules = new Rules();
+
     public void gameSelection(int gameType) {
         switch (gameType) {
             case 1:
-                Board boardHVH = new Board();
-                Validation validationHVH = new Validation();
-                Rules rulesHVH = new Rules();
-                Game gameHVH = new HumVsHumGame(boardHVH, validationHVH, rulesHVH);
+                Game gameHVH = new HumVsHumGame(board, validation, rules);
                 gameHVH.individualGameLoop();
                 break;
             case 2:
-                Board boardHVRc = new Board();
-                Validation validationHVRc = new Validation();
-                Rules rulesHVRc = new Rules();
-                RandomComputer randomComputerHVRc = new RandomComputer();
-                Game gameHVRc = new HumVsRandCPUGame(boardHVRc, validationHVRc, rulesHVRc, randomComputerHVRc);
+                RandomComputer randomComputer = new RandomComputer();
+                Game gameHVRc = new HumVsRandCPUGame(board, validation, rules, randomComputer);
                 gameHVRc.individualGameLoop();
                 break;
         }
