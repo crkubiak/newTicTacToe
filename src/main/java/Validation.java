@@ -3,7 +3,12 @@ import java.util.Scanner;
 
 public class Validation {
     public boolean validate(int choice, Board board) {
-        return moveIsInRange(choice) && moveIsAvailable(choice, board);
+        boolean validity = moveIsInRange(choice) && moveIsAvailable(choice, board);
+        if (!validity) {
+            System.out.print("\033[H\033[2J");
+            System.out.println(choice + " is an invalid turn!");
+        }
+        return validity;
     }
 
     private boolean moveIsInRange(int selectedSquare) {

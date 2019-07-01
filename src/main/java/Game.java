@@ -25,14 +25,13 @@ class Game {
             rules.victoryCheck(board.currentMoves(), currentPlayer().getMarker());
             turnCount += 1;
         } else {
-            System.out.print("\033[H\033[2J");
-            System.out.println(selectedSquare + " is an invalid turn!");
+            turn(currentPlayer().takeTurn(board));
         }
     }
 
     void loop() {
         while (turnCount < 9 && rules.didPlayerWin().length() == 0) {
-                turn(currentPlayer().takeTurn(board));
+            turn(currentPlayer().takeTurn(board));
         }
         System.out.println(board.displayBoard());
         if (rules.didPlayerWin().length() != 0) {
