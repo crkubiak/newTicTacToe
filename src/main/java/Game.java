@@ -20,8 +20,7 @@ public class Game {
     }
 
     public void move(int selectedSquare) {
-        if (validation.moveIsInRange(selectedSquare)
-                && validation.moveIsAvailable(selectedSquare, board)) {
+        if (validation.validate(selectedSquare, board)) {
             System.out.print("\033[H\033[2J");
             board.move(selectedSquare, currentPlayer());
             rules.victoryCheck(board.currentMoves(), currentPlayer());

@@ -27,6 +27,10 @@ public class HumanTest {
         System.setIn(testIn);
     }
 
+    private String getOutput() {
+        return testOut.toString();
+    }
+
     @After
     public void restoreSystemInputOutput() {
         System.setIn(systemIn);
