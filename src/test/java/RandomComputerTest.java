@@ -8,7 +8,7 @@ public class RandomComputerTest {
         Player rc = new RandomComputer();
         String[] testBoard = {"X", "X", "X", "O", "O", "X", "X", "O", "9"};
         Board board = new Board(testBoard);
-        int expected = 8;
+        int expected = 9;
         int actual = rc.takeTurn(board);
         assertEquals(expected, actual);
     }
