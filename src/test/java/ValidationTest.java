@@ -8,10 +8,11 @@ public class ValidationTest {
     @Test
     public void testMoveIsInRange() {
         Validation validation = new Validation();
-        assertTrue(validation.moveIsInRange(1));
-        assertTrue(validation.moveIsInRange(9));
-        assertFalse(validation.moveIsInRange(0));
-        assertFalse(validation.moveIsInRange(10));
+        Board board = new Board();
+        assertTrue(validation.validate(board, 1));
+        assertTrue(validation.validate(board, 9));
+        assertFalse(validation.validate(board, 0));
+        assertFalse(validation.validate(board, 10));
     }
 
     @Test
@@ -21,9 +22,9 @@ public class ValidationTest {
         Validation validation = new Validation();
         Player playerOne = new Human();
         Player playerTwo = new RandomComputer();
-        Game game = new Game(board, validation, rules, playerOne, playerTwo);
+        Game game = new Game(board, rules, validation, playerOne, playerTwo);
         game.move(5);
-        assertTrue(validation.moveIsAvailable(3, board));
-        assertFalse(validation.moveIsAvailable(5, board));
+        assertTrue(validation.validate(board, 3));
+        assertFalse(validation.validate(board, 5));
     }
 }

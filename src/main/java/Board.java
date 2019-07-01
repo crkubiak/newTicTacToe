@@ -22,7 +22,7 @@ public class Board {
                 currentBoard[6], currentBoard[7], currentBoard[8]);
     }
 
-    public void move(int selectedSquare, String playerMarker) {
+    public void markBoard(int selectedSquare, String playerMarker) {
         currentBoard[selectedSquare - 1] = playerMarker;
     }
 

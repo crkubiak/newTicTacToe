@@ -17,7 +17,7 @@ public class BoardTest {
     @Test
     public void testXMove() {
         Board board = new Board();
-        board.move(1, "X");
+        board.markBoard(1, "X");
         String[] expectedBoard = {"X","2","3","4","5","6","7","8","9"};
         String[] actualBoard = board.currentMoves();
         assertArrayEquals(expectedBoard, actualBoard);
@@ -26,7 +26,7 @@ public class BoardTest {
     @Test
     public void testOMove() {
         Board board = new Board();
-        board.move(2, "O");
+        board.markBoard(2, "O");
         String[] expectedBoard = {"1","O","3","4","5","6","7","8","9"};
         String[] actualBoard = board.currentMoves();
         assertArrayEquals(expectedBoard, actualBoard);
@@ -35,8 +35,8 @@ public class BoardTest {
     @Test
     public void testXAndOMove() {
         Board board = new Board();
-        board.move(8, "X");
-        board.move(9, "O");
+        board.markBoard(8, "X");
+        board.markBoard(9, "O");
         String[] expectedBoard = {"1","2","3","4","5","6","7","X","O"};
         String[] actualBoard = board.currentMoves();
         assertArrayEquals(expectedBoard, actualBoard);

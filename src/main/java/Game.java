@@ -1,16 +1,16 @@
 public class Game {
     private Board board;
-    private Validation validation;
     private Rules rules;
+    private Validation validation;
     private Player playerOne;
     private Player playerTwo;
     private int turnCount = 0;
     private String[] markers = {"X", "O"};
 
-    public Game(Board board, Validation validation, Rules rules, Player playerOne, Player playerTwo) {
+    public Game(Board board, Rules rules, Validation validation, Player playerOne, Player playerTwo) {
         this.board = board;
-        this.validation = validation;
         this.rules = rules;
+        this.validation = validation;
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
     }
@@ -20,10 +20,9 @@ public class Game {
     }
 
     public void move(int selectedSquare) {
-        if (validation.moveIsInRange(selectedSquare)
-                && validation.moveIsAvailable(selectedSquare, board)) {
+        if (validation.validate(board, selectedSquare)) {
             System.out.print("\033[H\033[2J");
-            board.move(selectedSquare, currentPlayer());
+            board.markBoard(selectedSquare, currentPlayer());
             rules.victoryCheck(board.currentMoves(), currentPlayer());
             turnCount += 1;
         } else {

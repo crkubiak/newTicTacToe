@@ -19,6 +19,6 @@ class GameSelector {
                 playerOne = new RandomComputer();
                 playerTwo = new RandomComputer();
         }
-        return new Game(board, validation, rules, playerOne, playerTwo);
+        return new Game(board, rules, validation, playerOne, playerTwo);
     }
 }
