@@ -1,13 +1,12 @@
-public class Game {
+class Game {
     private Board board;
     private Validation validation;
     private Rules rules;
-    private Player playerOne;
-    private Player playerTwo;
+    private AbstractPlayer playerOne;
+    private AbstractPlayer playerTwo;
     private int turnCount = 0;
-    private String[] markers = {"X", "O"};
 
-    public Game(Board board, Validation validation, Rules rules, Player playerOne, Player playerTwo) {
+    Game(Board board, Validation validation, Rules rules, AbstractPlayer playerOne, AbstractPlayer playerTwo) {
         this.board = board;
         this.validation = validation;
         this.rules = rules;
@@ -15,29 +14,25 @@ public class Game {
         this.playerTwo = playerTwo;
     }
 
-    public String currentPlayer() {
-        return markers[turnCount % 2];
+    AbstractPlayer currentPlayer() {
+        return (turnCount % 2 == 0) ? this.playerOne : this.playerTwo;
     }
 
-    public void move(int selectedSquare) {
+    void turn(int selectedSquare) {
         if (validation.validate(selectedSquare, board)) {
             System.out.print("\033[H\033[2J");
-            board.move(selectedSquare, currentPlayer());
-            rules.victoryCheck(board.currentMoves(), currentPlayer());
+            board.move(selectedSquare, currentPlayer().getMarker());
+            rules.victoryCheck(board.currentMoves(), currentPlayer().getMarker());
             turnCount += 1;
         } else {
             System.out.print("\033[H\033[2J");
-            System.out.println(selectedSquare + " is an invalid move!");
+            System.out.println(selectedSquare + " is an invalid turn!");
         }
     }
 
-    void individualGameLoop() {
+    void loop() {
         while (turnCount < 9 && rules.didPlayerWin().length() == 0) {
-            if (turnCount % 2 == 0) {
-                move(playerOne.takeTurn(board));
-            } else {
-                move(playerTwo.takeTurn(board));
-            }
+                turn(currentPlayer().takeTurn(board));
         }
         System.out.println(board.displayBoard());
         if (rules.didPlayerWin().length() != 0) {

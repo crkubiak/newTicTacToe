@@ -1,7 +1,5 @@
 import org.junit.Test;
 
-import java.util.InputMismatchException;
-
 import static org.junit.Assert.*;
 
 public class ValidationTest {
@@ -20,10 +18,10 @@ public class ValidationTest {
         Board board = new Board();
         Rules rules = new Rules();
         Validation validation = new Validation();
-        Player playerOne = new Human();
-        Player playerTwo = new RandomComputer();
+        AbstractPlayer playerOne = new Human("X");
+        AbstractPlayer playerTwo = new RandomComputer("O");
         Game game = new Game(board, validation, rules, playerOne, playerTwo);
-        game.move(5);
+        game.turn(5);
         assertTrue(validation.validate(3, board));
         assertFalse(validation.validate(5, board));
     }

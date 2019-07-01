@@ -1,7 +1,15 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Human implements Player {
+public class Human extends AbstractPlayer {
+    public Human() {
+        super("X");
+    }
+
+    public Human(String marker) {
+        super(marker);
+    }
+
     public int takeTurn(Board board){
         Scanner playerTurn = new Scanner(System.in);
         System.out.println(board.displayBoard());
