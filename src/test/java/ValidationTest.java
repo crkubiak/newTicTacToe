@@ -1,10 +1,30 @@
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.InputMismatchException;
 
 import static org.junit.Assert.*;
 
 public class ValidationTest {
+    private final PrintStream systemOut = System.out;
+    private ByteArrayOutputStream testOut;
+
+    @Before
+    public void setUpOutput() {
+        testOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOut));
+    }
+
+    @After
+    public void restoreSystemInputOutput() {
+        System.setOut(systemOut);
+    }
+
     @Test
     public void testMoveIsInRange() {
         Validation validation = new Validation();
