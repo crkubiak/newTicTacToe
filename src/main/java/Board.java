@@ -3,14 +3,6 @@ import java.util.ArrayList;
 public class Board {
     private String[] currentBoard;
 
-    Board(String[] currentBoard) {
-        this.currentBoard = currentBoard;
-    }
-
-    Board() {
-        this.currentBoard = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    }
-
     public String[] currentMoves() {
         return currentBoard;
     }
@@ -34,5 +26,13 @@ public class Board {
             }
         }
         return available;
+    }
+
+    Board(String[] currentBoard) {
+        this.currentBoard = currentBoard;
+    }
+
+    Board() {
+        this.currentBoard = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
     }
 }

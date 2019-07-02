@@ -20,8 +20,8 @@ public class ValidationTest {
         Board board = new Board();
         Rules rules = new Rules();
         Validation validation = new Validation();
-        Player playerOne = new Human();
-        Player playerTwo = new RandomComputer();
+        AbstractPlayer playerOne = new Human();
+        AbstractPlayer playerTwo = new RandomComputer();
         Game game = new Game(board, rules, validation, playerOne, playerTwo);
         game.move(5);
         assertTrue(validation.validate(board, 3));
