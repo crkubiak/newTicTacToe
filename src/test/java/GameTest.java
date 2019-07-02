@@ -6,45 +6,57 @@ public class GameTest {
 
     @Test
     public void gameStartsWithPlayerX() {
-
-        Validation validation = new Validation();
         Board board = new Board();
         Rules rules = new Rules();
-        Game game = new Game(board, validation, rules);
-        assertEquals("X", game.currentPlayer());
+        Validation validation = new Validation();
+        AbstractPlayer playerOne = new Human();
+        AbstractPlayer playerTwo = new RandomComputer();
+        Game game = new Game(board, rules, validation, playerOne, playerTwo);
+        String expectedPlayer = "X";
+        String actualPlayer = game.currentPlayer().getMarker();
+        assertEquals(expectedPlayer, actualPlayer);
     }
 
     @Test
     public void gameSwitchesToNextPlayer() {
-        Validation validation =new Validation();
         Board board = new Board();
         Rules rules = new Rules();
-        Game game = new Game(board, validation, rules);
+        Validation validation = new Validation();
+        AbstractPlayer playerOne = new Human();
+        AbstractPlayer playerTwo = new RandomComputer();
+        Game game = new Game(board, rules, validation, playerOne, playerTwo);
         game.move(1);
-        assertEquals("O", game.currentPlayer());
+        String expectedPlayer = "O";
+        String actualPlayer = game.currentPlayer().getMarker();
+        assertEquals(expectedPlayer, actualPlayer);
     }
 
     @Test
     public void boardMarkedWhenTurnTaken() {
-        Validation validation =new Validation();
         Board board = new Board();
         Rules rules = new Rules();
-        Game game = new Game(board, validation, rules);
+        Validation validation = new Validation();
+        AbstractPlayer playerOne = new Human();
+        AbstractPlayer playerTwo = new RandomComputer();
+        Game game = new Game(board, rules, validation, playerOne, playerTwo);
         game.move(1);
-        String[] expectedBoard = {"X","2","3","4","5","6","7","8","9"};
-        assertArrayEquals(expectedBoard, board.currentMoves());
+        String[] expectedBoard = {"X", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] actualBoard = board.currentMoves();
+        assertArrayEquals(expectedBoard, actualBoard);
     }
 
     @Test
     public void multipleTurnsMarkedOnBoard() {
-        Validation validation =new Validation();
         Board board = new Board();
         Rules rules = new Rules();
-        Game game = new Game(board, validation, rules);
-
-        game.move(4);
-        game.move(6);
-        String[] expectedBoard = {"1","2","3","X","5","O","7","8","9"};
-        assertArrayEquals(expectedBoard, board.currentMoves());
+        Validation validation = new Validation();
+        AbstractPlayer playerOne = new Human();
+        AbstractPlayer playerTwo = new RandomComputer();
+        Game game = new Game(board, rules, validation, playerOne, playerTwo);
+        game.move(2);
+        game.move(3);
+        String[] expectedBoard = {"1", "X", "O", "4", "5", "6", "7", "8", "9"};
+        String[] actualBoard = board.currentMoves();
+        assertArrayEquals(expectedBoard, actualBoard);
     }
 }

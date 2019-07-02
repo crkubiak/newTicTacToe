@@ -1,43 +1,38 @@
-import java.util.Scanner;
-
 public class Game {
-
     private Board board;
-    private Validation validation;
     private Rules rules;
+    private Validation validation;
+    private AbstractPlayer playerOne;
+    private AbstractPlayer playerTwo;
     private int turnCount = 0;
     private String[] markers = {"X", "O"};
 
-    public Game(Board board, Validation validation, Rules rules) {
+    public Game(Board board, Rules rules, Validation validation, AbstractPlayer playerOne, AbstractPlayer playerTwo) {
         this.board = board;
-        this.validation = validation;
         this.rules = rules;
+        this.validation = validation;
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
     }
 
-    public String currentPlayer() {
-        return markers[turnCount % 2];
+    AbstractPlayer currentPlayer() {
+        return (turnCount % 2 == 0) ? this.playerOne : this.playerTwo;
     }
 
-    public void move(int selectedSquare) {
-        if (validation.moveIsInRange(selectedSquare)
-                && validation.moveIsAvailable(selectedSquare, board)) {
+    void move(int selectedSquare) {
+        if (validation.validate(board, selectedSquare)) {
             System.out.print("\033[H\033[2J");
-            board.move(selectedSquare, currentPlayer());
-            rules.victoryCheck(board.currentMoves(), currentPlayer());
+            board.markBoard(selectedSquare, currentPlayer().getMarker());
+            rules.victoryCheck(board.currentMoves(), currentPlayer().getMarker());
             turnCount += 1;
         } else {
-            System.out.print("\033[H\033[2J");
-            System.out.println("Invalid Move!");
+            move(currentPlayer().takeTurn(board));
         }
     }
 
     void individualGameLoop() {
-        Scanner playerTurn = new Scanner(System.in);
         while (turnCount < 9 && rules.didPlayerWin().length() == 0) {
-            System.out.println(board.displayBoard());
-            System.out.println("Please enter a number 1-9: ");
-            int playerInput = validation.inputInt("Integers only! Please enter a number 1-9: ", playerTurn);
-            move(playerInput);
+                move(currentPlayer().takeTurn(board));
         }
         System.out.println(board.displayBoard());
         if (rules.didPlayerWin().length() != 0) {
