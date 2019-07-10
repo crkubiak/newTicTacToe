@@ -3,61 +3,43 @@ import java.util.List;
 import java.util.Optional;
 
 public class Node {
-    private int square;
-    private int score;
-    private List<Node> children;
-    private boolean isMaxPlayer;
+    ArrayList<Node> children;
+    boolean hasValue;
+    int value;
 
-    public Node(int square, boolean isMaxPlayer) {
-        this.square = square;
-        this.isMaxPlayer = isMaxPlayer;
+    public Node(int value, ArrayList<Node> children) {
+        this.value = value;
+        hasValue = true;
+        this.children = children;
+    }
+
+    public Node(ArrayList<Node> children) {
+        this.value = 0;
+        hasValue = false;
+        this.children = children;
+    }
+
+    public Node(int value) {
+        this.value = value;
+        hasValue = true;
         children = new ArrayList<>();
     }
 
-    int getSquare() {
-        return square;
+    public Node() {
+        this.value = 0;
+        hasValue = false;
+        children = new ArrayList<>();
     }
 
-    boolean isMaxPlayer() {
-        return isMaxPlayer;
+    public boolean hasValue() {
+        return hasValue;
     }
 
-    int getScore() {
-        return score;
-    }
-
-    void setScore(int score) {
-        this.score = score;
-    }
-
-    List<Node> getChildren() {
+    public ArrayList<Node> children() {
         return children;
     }
 
-    void addChild(Node newNode) {
-        children.add(newNode);
+    public int value() {
+        return value;
     }
-
-
-//    private Optional<Integer> score;
-//    private ArrayList<Node> children = new ArrayList<Node>();
-//    public Node(Integer score) {
-//        this.score = Optional.of(score);
-//    }
-//
-//    public Node() {
-//        this.score = Optional.empty();
-//    }
-//
-//    Optional<Integer> score() {
-//        return score;
-//    }
-//
-//    public ArrayList<Node> children() {
-//        return children;
-//    }
-//
-//    public void addChild(Node child) {
-//        children.add(child);
-//    }
 }

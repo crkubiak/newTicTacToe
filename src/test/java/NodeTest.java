@@ -7,62 +7,98 @@ import static org.junit.Assert.*;
 
 public class NodeTest {
     @Test
-    public void aNodeHasADefaultScoreOfZero() {
-        Node node = new Node(3, true);
-
-        Optional<Integer> expectedResult = Optional.empty();
-        Optional<Integer> actualResult = node.score();
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    public void aNodeCanHaveAScoreOtherThanZero() {
-        Node node = new Node(100);
-
-        Optional<Integer> expectedResult = Optional.of(100);
-        Optional<Integer> actualResult = node.score();
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    public void aNodeStartsOffWithNoChildren() {
+    public void createsANodeWithNoValueAndNoChildren() {
         Node node = new Node();
 
-        ArrayList<Node> expectedArrayList = new ArrayList<Node>();
-        ArrayList<Node> actualArrayList = node.children();
+        boolean expectedHasValue = false;
+        boolean actualHasValue = node.hasValue();
 
-        assertEquals(expectedArrayList, actualArrayList);
+        assertEquals(expectedHasValue, actualHasValue);
     }
 
     @Test
-    public void addOneChildToANode() {
-        Node parent = new Node();
-        Node child = new Node(15);
-        parent.addChild(child);
+    public void createsANodeWithNoChildren() {
+        Node node = new Node();
 
-        ArrayList<Node> expectedChildren = new ArrayList<Node>();
-        expectedChildren.add(child);
+        boolean expectedHasChildren = true;
+        boolean actualHasChildren = node.children().isEmpty();
+
+        assertEquals(expectedHasChildren, actualHasChildren);
+    }
+
+    @Test
+    public void createsANodeWithAValue() {
+        Node node = new Node(5);
+
+        boolean expectedHasValue = true;
+        boolean actualHasValue = node.hasValue();
+
+        int expectedValue = 5;
+        int actualValue = node.value();
+
+        assertEquals(expectedHasValue, actualHasValue);
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void createsANodeWithOneChildAndAValue() {
+        Node child = new Node(10);
+        ArrayList<Node> children = new ArrayList<>();
+        children.add(child);
+        Node parent = new Node(40, children);
+
+        boolean expectChild = true;
+        boolean actualChild = parent.children().contains(child);
+
+        assertEquals(expectChild, actualChild);
+    }
+
+    @Test
+    public void createsANodeWithOneChildAndNoValue() {
+        Node child = new Node(20);
+        ArrayList<Node> children = new ArrayList<>();
+        children.add(child);
+        Node parent = new Node(children);
+
+        boolean expectedChild = true;
+        boolean actualChild = parent.children().contains(child);
+
+        assertEquals(expectedChild, actualChild);
+    }
+
+    @Test
+    public void createsANodeWithThreeChildrenAndValue() {
+        Node child1 = new Node(20);
+        Node child2 = new Node(30);
+        Node child3 = new Node(40);
+        ArrayList<Node> children = new ArrayList<>();
+        children.add(child1);
+        children.add(child2);
+        children.add(child3);
+        Node parent = new Node(40, children);
+
+        ArrayList<Node> expectedChildren = children;
         ArrayList<Node> actualChildren = parent.children();
 
         assertEquals(expectedChildren, actualChildren);
     }
 
     @Test
-    public void addTwoChildrenToANode() {
-        Node parent = new Node();
-        Node child1 = new Node(15);
-        Node child2 = new Node(15);
-        parent.addChild(child1);
-        parent.addChild(child2);
+    public void createsALinkedList() {
+        Node child = new Node(10);
+        ArrayList<Node> childToParent = new ArrayList<>();
+        childToParent.add(child);
+        Node parent = new Node(20, childToParent);
+        ArrayList<Node> parentToGrandParent = new ArrayList<>();
+        parentToGrandParent.add(parent);
+        Node grandParent = new Node(30, parentToGrandParent);
 
-        ArrayList<Node> expectedChildren = new ArrayList<Node>();
-        expectedChildren.add(child1);
-        expectedChildren.add(child2);
-        ArrayList<Node> actualChildren = parent.children();
+        ArrayList<Node> expectedLink1 = childToParent;
+        ArrayList<Node> actualLink1 = parent.children();
+        ArrayList<Node> expectedLink2 = parentToGrandParent;
+        ArrayList<Node> actualLink2 = grandParent.children();
 
-        assertEquals(expectedChildren, actualChildren);
+        assertEquals(expectedLink1, actualLink1);
+        assertEquals(expectedLink2, actualLink2);
     }
-
 }
