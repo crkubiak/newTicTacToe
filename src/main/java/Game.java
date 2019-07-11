@@ -5,7 +5,6 @@ public class Game {
     private AbstractPlayer playerOne;
     private AbstractPlayer playerTwo;
     private int turnCount = 0;
-    private String[] markers = {"X", "O"};
 
     public Game(Board board, Rules rules, Validation validation, AbstractPlayer playerOne, AbstractPlayer playerTwo) {
         this.board = board;

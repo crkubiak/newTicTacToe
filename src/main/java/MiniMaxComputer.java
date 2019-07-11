@@ -1,14 +1,19 @@
 public class MiniMaxComputer extends AbstractPlayer {
-    public MiniMaxComputer() {
+    MiniMax2 mm;
+    public MiniMaxComputer(MiniMax2 mm) {
         super("O");
+        this.mm = mm;
     }
 
-    public MiniMaxComputer(String marker) {
+    public MiniMaxComputer(MiniMax2 mm, String marker) {
         super((marker));
+        this.mm = mm;
     }
 
     public int takeTurn(Board board) {
-        return 9;
+
+        mm.score(0, board);
+        return mm.miniMaxMove;
     }
 }
 
@@ -16,7 +21,7 @@ public class MiniMaxComputer extends AbstractPlayer {
 - Computer player should take a turn - MiniMaxComputer.takeTurn(board)
     - Current game board is passed into takeTurn
 - Board is then fed into the minimax function MM.score()
-- MM will recurse through
+- MM will recurse through each level of the board
 - After each marked move MM should check for victory
     - If MM is victorious it should be scored + 10
     - If opponent is victorious it should be scored -10

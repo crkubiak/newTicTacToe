@@ -2,6 +2,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MiniMax {
+    int emptySqaure = 0;
+    int maxPlayer = 1;
+    int minPlayer = 2;
+    Board board;
+    Rules rules;
+
+
+    public MiniMax(Board board) {
+        this.board = board;
+    }
 
     public int score(Node node) {
         if(node.hasValue()) {
