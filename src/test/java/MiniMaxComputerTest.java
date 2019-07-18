@@ -6,43 +6,37 @@ import static org.junit.Assert.*;
 
 public class MiniMaxComputerTest {
     @Test
-    public void testMakeLastMoveOnBoard() {
-        String[] testBoard = {
-                "X", "X", "X",
-                "O", "O", "X",
-                "X", "O", "9"};
+    public void miniMaxTakesCornerOnFirstMove() {
+        String[] testBoard = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         Board board = new Board(testBoard);
-        Rules rules = new Rules();
-        Validation validation = new Validation();
-        AbstractPlayer playerOne = new Human();
-        AbstractPlayer playerTwo = new MiniMaxComputer();
-        Game game = new Game(board, rules, validation, playerOne, playerTwo);
+        Player mmc = new MiniMaxComputer();
 
-        int expectedTurn = 9;
-        int actualTurn = playerTwo.takeTurn(board);
-        game.move(actualTurn);
-
-        String[] expectedBoard = {
-                "X", "X", "X",
-                "O", "O", "X",
-                "X", "O", "O"};
-        System.out.println(Arrays.toString(board.currentMoves()));
-        String[] actualBoard = board.currentMoves();
-
-        assertEquals(expectedTurn, actualTurn);
-        assertArrayEquals(expectedBoard, actualBoard);
+        int expected = 1;
+        int actual = mmc.takeTurn(board);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void testMakeWinningLookAheadOfOneMove() {
-        String[] testBoard = {"X", "X", "X", "O", "O", "X", "X", "O", "9"};
+    public void miniMaxTakesCenterOnSecondMove() {
+        String[] testBoard = {"X", "2", "3", "4", "5", "6", "7", "8", "9"};
         Board board = new Board(testBoard);
-        MiniMax mm = new MiniMax(board);
         Player mmc = new MiniMaxComputer();
 
-        int expected = 9;
+        int expected = 5;
+        int actual = mmc.takeTurn(board);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void miniMaxWillBlock() {
+        String[] testBoard = {"X", "2", "O", "X", "5", "6", "7", "8", "9"};
+        Board board = new Board(testBoard);
+        Player mmc = new MiniMaxComputer();
+
+        int expected = 7;
         int actual = mmc.takeTurn(board);
         assertEquals(expected, actual);
     }
 
 }
+

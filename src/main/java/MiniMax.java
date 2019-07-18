@@ -1,25 +1,21 @@
 public class MiniMax {
     private final Board board;
-//    String currentPlayer;
-//    String opponentPlayer;
-    Rules rules = new Rules();
-    String maximizer;
-    String minimizer;
+    private Rules rules = new Rules();
+    private String maximizer;
+    private String minimizer;
 
     public MiniMax(Board board) {
         this.board = board;
-        maximizer = "O";
-        minimizer = "X";
     }
 
     private Integer evalBoard(int depth) {
         final int WINNING_SCORE = 10;
         final int LOSING_SCORE = -10;
         final int DRAW_SCORE = 0;
-        if (rules.victoryCheck(board.currentMoves(), maximizer) == maximizer){
+        if (rules.victoryCheck(board.currentMoves(), maximizer).equals(maximizer)){
             return WINNING_SCORE - depth;
         }
-        if (rules.victoryCheck(board.currentMoves(), minimizer) == minimizer) {
+        if (rules.victoryCheck(board.currentMoves(), minimizer).equals(minimizer)) {
             return LOSING_SCORE + depth;
         }
         return DRAW_SCORE;
@@ -57,10 +53,24 @@ public class MiniMax {
         }
     }
 
+    private void currentPlayer() {
+        int xCount = 0;
+        int oCount = 0;
+        for (int square = 0; square < board.currentMoves().length; square++) {
+            if(board.currentMoves()[square].equals("X")) {
+                xCount += 1;
+            } else if (board.currentMoves()[square].equals("O")){
+                oCount += 1;
+            }
+        }
+        maximizer = xCount == oCount ? "X" : "O";
+        minimizer = maximizer.equals("X") ? "O" : "X";
+    }
+
     public Integer chooseMove() {
         int bestValue = Integer.MIN_VALUE;
         int bestIndex = Integer.MIN_VALUE;
-//        currentPlayer();
+        currentPlayer();
         for (int space : board.availableSpaces()) {
 
             board.markBoard(space + 1, maximizer);
@@ -74,37 +84,11 @@ public class MiniMax {
         return bestIndex;
     }
 
-    public void currentPlayer() {
-        int xCount = 0;
-        int oCount = 0;
-        for (int square = 0; square < board.currentMoves().length; square++) {
-            if(board.currentMoves()[square] == "X") {
-                xCount += 1;
-            } else if (board.currentMoves()[square] == "O"){
-                oCount += 1;
-            }
-        }
-//        currentPlayer = xCount == oCount ? "X" : "O";
-//        opponentPlayer = currentPlayer == "X" ? "O" : "X";
+    public String getMaximizer() {
+        return maximizer;
+    }
+
+    public String getMinimizer() {
+        return minimizer;
     }
 }
-
-//    public int chooseMove() {
-//        int bestScore = -100;
-//        int bestIndex = 0;
-//        currentPlayer();
-//        for (int space : board.availableSpaces()) {
-//            int score;
-//            board.markBoard(space + 1, currentPlayer);
-//            if (space == 6) {
-//                score = 10;
-//            } else {
-//                score = -10;
-//            }
-//            board.markBoard(space + 1, Integer.toString(space + 1));
-//            if (score > bestScore) {
-//                bestScore = score;
-//                bestIndex = space;
-//            }
-//        }
-

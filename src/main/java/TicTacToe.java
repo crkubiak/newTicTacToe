@@ -10,6 +10,7 @@ public class TicTacToe {
                     "2. Human vs Random Choice CPU\n" +
                     "3. Human vs MiniMax Computer\n" +
                     "4. Random Choice CPU vs Random Choice CPU\n" +
+                    "5. MiniMaxComputer vs. MiniMax Computer\n" +
                     "\nWhat type of game would you like to play: ");
             Scanner pickAGame = new Scanner(System.in);
             int gameType = pickAGame.nextInt();
