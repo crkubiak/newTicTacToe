@@ -1,19 +1,19 @@
 public class MiniMaxComputer extends AbstractPlayer {
-    MiniMax2 mm;
-    public MiniMaxComputer(MiniMax2 mm) {
+
+    public MiniMaxComputer() {
         super("O");
-        this.mm = mm;
+
     }
 
-    public MiniMaxComputer(MiniMax2 mm, String marker) {
+    public MiniMaxComputer(String marker) {
         super((marker));
-        this.mm = mm;
+
     }
 
     public int takeTurn(Board board) {
-
-        mm.score(0, board);
-        return mm.miniMaxMove;
+//
+        return new MiniMax(board).chooseMove() + 1;
+//        return 0;
     }
 }
 

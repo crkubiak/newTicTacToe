@@ -1,101 +1,84 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MiniMax2 {
-    Rules rules;
-    Board board;
-    int noPlayer = 0;
-    String playerOne = "X";
-    String playerTwo = "O";
-    String currentPlayer = "";
-    int depth = 0;
-    int miniMaxMove;
+//    Board board;
+//    Rules rules;
+//    String humanPlayer = "X";
+//    String aiPlayer = "O";
+//    String currentPlayer = aiPlayer;
+//    String opponent = humanPlayer;
+//
+//    public MiniMax2(Board board) {
+//        this.board = board;
+//    }
+//
+//    public int chooseSpace(Board board) {
+//        return calculateBestMove(board, 0, new HashMap<>());
+//    }
+//
+//    private int calculateBestMove(Board board, int depth, Map<Integer, Integer> potentialOutComes) {
+//
+//        int TIEDGAME = 0;
+//        int humanWin = -1;
+//        int aiWin = 1;
+//        String didAIWin = rules.victoryCheck(board.curre` `, aiPlayer);
+//        String didHumanWin = rules.victoryCheck(board.currentMoves(), humanPlayer);
+//
+//        if (board.availableSpaces(board.currentMoves()).size() == 0) {
+//            return TIEDGAME;
+//        } else if (didAIWin == aiPlayer) {
+//            return aiWin;
+//        } else if (didHumanWin == humanPlayer) {
+//            return humanWin;
+//        } else {
+//            checkPossibilities(board, depth, potentialOutComes);
+//            if (depth == 0) {
+//                return getBestMove(potentialOutComes);
+//            } else {
+//                return getTopScore(potentialOutComes);
+//            }
+//        }
+//    }
+//
+//    private void checkPossibilities(Board board, int depth, Map<Integer, Integer> potentionalOutcomes) {
+//        for (int space : board.availableSpaces(board.currentMoves())) {
+//            emulateTurn(board, space);
+//            addPossibilityToOutcomes(board, depth, potentionalOutcomes, space);
+//            resetBoard(board, space);
+//        }
+//    }
+//
+//    private void emulateTurn(Board board, int space) {
+//        board.markBoard(space, currentPlayer);
+//        changeCurrentPlayer();
+//    }
+//
+//    private void addPossibilityToOutcomes(Board board, int depth, Map<Integer, Integer> potentialOutcomes, int space) {
+//        potentialOutcomes.put(space, (-1 * calculateBestMove(board, depth + 1, new HashMap<>())));
+//    }
+//
+//    private void resetBoard(Board board, int space) {
+//        board.markBoard(space, Integer.toString(space)); //possibly + 1
+//        changeCurrentPlayer();
+//    }
+//
+//    private int getBestMove(Map<Integer, Integer> bestScore) {
+//        return bestScore.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey();
+//    }
+//
+//    private int getTopScore(Map<Integer, Integer> bestScore) {
+//        return bestScore.entrySet().stream().max(Map.Entry.comparingByValue()).get().getValue();
+//    }
+//
+//    private void changeCurrentPlayer() {
+//        if (currentPlayer == aiPlayer) {
+//            currentPlayer = humanPlayer;
+//        } else {
+//            currentPlayer = aiPlayer;
+//        }
+//    }
+//
 
-    public MiniMax2(Board board) {
-        this.board = board;
-    }
-
-    public String[] returnBoard() {
-        return board.currentMoves();
-    }
-
-    public String currentPlayer() {
-        int turnCount = 0;
-        for (int square = 0; square < board.currentMoves().length; square++) {
-            if(board.currentMoves()[square] == "X") {
-                turnCount += 1;
-            }
-        }
-        if (turnCount % 2 == 0) {
-            return playerOne;
-        } else {
-            return currentPlayer = playerTwo;
-        }
-    }
-
-    public List<String> getAvailableSquares() {
-        List<String> availableSquares = new ArrayList<>();
-        for (int square = 0; square < board.currentMoves().length; square++) {
-            if(board.currentMoves()[square] != "X" &&
-            board.currentMoves()[square] != "O") {
-                availableSquares.add(board.currentMoves()[square]);
-            }
-        }
-        return availableSquares;
-    }
-
-    public int score(int depth, Board board) {
-        if (rules.victoryCheck(board.currentMoves(), currentPlayer()) == "X") {
-            return 10;
-        }
-
-        if (rules.victoryCheck(board.currentMoves(), currentPlayer()) == "O") {
-            return -10;
-        }
-
-        List<String> availableSquares = getAvailableSquares();
-
-        if (availableSquares.isEmpty()) {
-            return 0;
-        }
-
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-
-        for (int square = 0; square < availableSquares.size(); square++) {
-            if (currentPlayer() == "X") {
-                board.markBoard(Integer.parseInt(availableSquares.get(square)), currentPlayer());
-                int currentScore = score(depth + 1, board);
-                max = Math.max(currentScore, max);
-
-                if (currentScore >= 0) {
-                    if (depth == 0) {
-                        miniMaxMove = Integer.parseInt(availableSquares.get(square));
-//                        board.markBoard(Integer.parseInt(availableSquares.get(square)), currentPlayer);
-                    }
-                }
-                if (currentScore == 10) {
-                    board.markBoard(Integer.parseInt(availableSquares.get(square)), "0");
-                    break;
-                }
-
-                if (square == availableSquares.size() - 1 && max < 0) {
-                    if (depth == 0) {
-                        miniMaxMove = Integer.parseInt(availableSquares.get(square));
-//                        board.markBoard(Integer.parseInt(availableSquares.get(square)), currentPlayer);
-                    }
-                }
-            } else if (currentPlayer() == "O") {
-                int currentScore = score(depth + 1, board);
-                min = Math.min(currentScore, min);
-
-                if (min == -10) {
-                    board.markBoard(Integer.parseInt(availableSquares.get(square)), "0");
-                    break;
-                }
-            }
-            board.markBoard(Integer.parseInt(availableSquares.get(square)), "0");
-        }
-        return currentPlayer() == playerOne ? max : min;
-    }
 }
+
