@@ -11,9 +11,7 @@ public class MiniMaxComputer extends AbstractPlayer {
     }
 
     public int takeTurn(Board board) {
-//
         return new MiniMax(board).chooseMove() + 1;
-//        return 0;
     }
 }
 

@@ -14,13 +14,13 @@ public class MiniMaxTest {
 //                "X","5","6",
 //                "7","8","9"
                 "X","X","O",
-                "4","O","X",
-                "7","8","9"
+                "X","O","X",
+                "7","8","O"
         };
         Board board = new Board(testBoard);
         MiniMax miniMax = new MiniMax(board);
 
-        int expectedMove = 8;
+        int expectedMove = 6;
         int actualMove = miniMax.chooseMove();
 
         assertEquals(expectedMove, actualMove);

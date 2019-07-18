@@ -30,11 +30,11 @@ public class Game {
     }
 
     void individualGameLoop() {
-        while (turnCount < 9 && rules.didPlayerWin().length() == 0) {
+        while (turnCount < 9 && !rules.didPlayerWin()) {
                 move(currentPlayer().takeTurn(board));
         }
         System.out.println(board.displayBoard());
-        if (rules.didPlayerWin().length() != 0) {
+        if (rules.didPlayerWin()) {
             System.out.println("Player " + rules.didPlayerWin() + " wins!");
         } else {
             System.out.println("The game is a draw");
