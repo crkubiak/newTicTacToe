@@ -1,39 +1,45 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
 
 public class MiniMaxTest {
-    @Test
-    public void itScoresAParentWithNoChildren() {
-        Node node = new Node(19);
-        MiniMax minimax = new MiniMax();
 
-        assertEquals(Optional.of(19), minimax.treeScore(node));
+    @Test
+    public void selectsAvailableSquareFromBoardWithOneEmptySquare(){
+        String[] testBoard = {
+                "X","O","3",
+                "X","5","6",
+                "7","8","9"
+        };
+        Board board = new Board(testBoard);
+        MiniMax miniMax = new MiniMax(board);
+
+        int expectedMove = 6;
+        int actualMove = miniMax.chooseMove();
+
+        assertEquals(expectedMove, actualMove);
     }
 
     @Test
-    public void itScoresAParentWithOneChildIfTheParentHasANonNullScore() {
-        Node parent = new Node(14);
-//        Node child = new Node(203);
-        Node child = new Node(203);
-        parent.addChild(child);
+    public void determineCurrentPlayer() {
+        String[] testBoard = {
+                "X","O","X",
+                "O","X","6",
+                "7","8","O"
+        };
+        Board board = new Board(testBoard);
+        MiniMax miniMax = new MiniMax(board);
+        miniMax.chooseMove();
 
-        MiniMax minimax = new MiniMax();
+        String expectedMaximizer = "X";
+        String expectedMinimizer = "O";
+        String actualMaximizer = miniMax.getMaximizer();
+        String actualMinimizer = miniMax.getMinimizer();
 
-        assertEquals(Optional.of(14), minimax.treeScore(parent));
+        assertEquals(expectedMaximizer, actualMaximizer);
+        assertEquals(expectedMinimizer, actualMinimizer);
     }
-
-    @Test
-    public void itScoresAParentWithOneChildAndNullScore() {
-        Node parent = new Node(); // Somehow, this needs to have a score of null or whatever
-        Node child = new Node(203);
-        parent.addChild(child);
-
-        MiniMax minimax = new MiniMax();
-
-        assertEquals(Optional.of(203), minimax.treeScore(parent));
-    }
-
 }

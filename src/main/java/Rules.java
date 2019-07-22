@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Rules {
-    private String playerWon = "";
+    private boolean didPlayerWin;
     private Integer[] currentPlayersBoard = {0,0,0,0,0,0,0,0,0};
     private Integer[][] winningBoards = {
             {1,2,3},
@@ -15,17 +15,19 @@ public class Rules {
             {3,5,7}
     };
 
-    String didPlayerWin() {
-        return playerWon;
+    boolean didPlayerWin() {
+        return didPlayerWin;
     }
 
     public String victoryCheck(String[] board, String currentPlayer) {
         Integer[] boardToCheck = playerConversion(board, currentPlayer);
+        String playerWon ="";
         for (int game = 0; game < currentPlayersBoard.length - 1; game++) {
             HashSet<Integer> victorySet = new HashSet<>(Arrays.asList(boardToCheck));
             victorySet.retainAll(Arrays.asList(winningBoards[game]));
             if (victorySet.size() == 3) {
                 playerWon = currentPlayer;
+                didPlayerWin = true;
             } else {
                 currentPlayersBoard = new Integer[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
             }

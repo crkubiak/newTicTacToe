@@ -5,7 +5,7 @@ public class Game {
     private AbstractPlayer playerOne;
     private AbstractPlayer playerTwo;
     private int turnCount = 0;
-    private String[] markers = {"X", "O"};
+    private String winningMarker;
 
     public Game(Board board, Rules rules, Validation validation, AbstractPlayer playerOne, AbstractPlayer playerTwo) {
         this.board = board;
@@ -24,6 +24,7 @@ public class Game {
             System.out.print("\033[H\033[2J");
             board.markBoard(selectedSquare, currentPlayer().getMarker());
             rules.victoryCheck(board.currentMoves(), currentPlayer().getMarker());
+            winningMarker = currentPlayer().getMarker();
             turnCount += 1;
         } else {
             move(currentPlayer().takeTurn(board));
@@ -31,12 +32,12 @@ public class Game {
     }
 
     void individualGameLoop() {
-        while (turnCount < 9 && rules.didPlayerWin().length() == 0) {
+        while (turnCount < 9 && !rules.didPlayerWin()) {
                 move(currentPlayer().takeTurn(board));
         }
         System.out.println(board.displayBoard());
-        if (rules.didPlayerWin().length() != 0) {
-            System.out.println("Player " + rules.didPlayerWin() + " wins!");
+        if (rules.didPlayerWin()) {
+            System.out.println("Player " + winningMarker + " wins!");
         } else {
             System.out.println("The game is a draw");
         }
