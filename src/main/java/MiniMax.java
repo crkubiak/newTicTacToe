@@ -14,11 +14,11 @@ public class MiniMax {
         final int DRAW_SCORE = 0;
         if (rules.victoryCheck(board.currentMoves(), maximizer).equals(maximizer)){
             return WINNING_SCORE - depth;
-        }
-        if (rules.victoryCheck(board.currentMoves(), minimizer).equals(minimizer)) {
+        } else if (rules.victoryCheck(board.currentMoves(), minimizer).equals(minimizer)) {
             return LOSING_SCORE + depth;
+        } else {
+            return DRAW_SCORE;
         }
-        return DRAW_SCORE;
     }
 
     private Integer miniMax(int depth, boolean isMax) {
@@ -36,7 +36,7 @@ public class MiniMax {
 
             for (int square : board.availableSpaces()) {
                 board.markBoard(square + 1, maximizer);
-                best = Integer.max(best, miniMax(depth +1, false));
+                best = Integer.max(best, miniMax(depth + 1, false));
                 board.markBoard(square + 1, Integer.toString(square + 1));
             }
 
